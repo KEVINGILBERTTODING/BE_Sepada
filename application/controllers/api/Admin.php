@@ -14,6 +14,7 @@ class Admin extends CI_Controller
 		$this->load->helper('download');
 		$this->load->model('api/user_model');
 		$this->load->model('api/user_detail_model');
+		$this->load->model('ExcelModel');
 	}
 
 	function getAllPengajuan()
@@ -73,5 +74,10 @@ class Admin extends CI_Controller
 			];
 			echo json_encode($response);
 		}
+	}
+
+	function downloadRekapPengajuan($status, $dateStart, $dateEnd)
+	{
+		$this->ExcelModel->createExcel($status, $dateStart, $dateEnd);
 	}
 }
