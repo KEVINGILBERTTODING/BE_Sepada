@@ -31,6 +31,18 @@ class User_detail_model extends CI_Model
 			return false;
 		}
 	}
+
+	function update($id, $data)
+	{
+
+		$this->db->where('id_user_detail', $id);
+		$update = $this->db->update('user_detail', $data);
+		if ($update) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 /* End of file User_detail_model.php */

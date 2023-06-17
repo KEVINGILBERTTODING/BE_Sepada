@@ -22,6 +22,28 @@ class Cuti_model extends CI_Model
 		return $this->db->get()->result();
 	}
 
+	function getCutiByStatus($id, $status)
+	{
+		if ($status == 'all') {
+			$this->db->select('*');
+			$this->db->from('cuti');
+			$this->db->join('user', 'user.id_user = cuti. id_user', 'left');
+			$this->db->join('user_detail', 'user_detail.id_user_detail = cuti. id_user', 'left');
+			$this->db->where('cuti.id_user', $id);
+			$this->db->order_by('cuti. tgl_diajukan', 'desc');
+			return $this->db->get()->result();
+		} else {
+			$this->db->select('*');
+			$this->db->from('cuti');
+			$this->db->join('user', 'user.id_user = cuti. id_user', 'left');
+			$this->db->join('user_detail', 'user_detail.id_user_detail = cuti. id_user', 'left');
+			$this->db->where('cuti.id_user', $id);
+			$this->db->where('cuti.id_status', $status);
+			$this->db->order_by('cuti. tgl_diajukan', 'desc');
+			return $this->db->get()->result();
+		}
+	}
+
 	function getCutiById($id)
 	{
 		$this->db->select('*');

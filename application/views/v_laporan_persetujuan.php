@@ -64,8 +64,8 @@
 <body>
 
 
-	<p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="height:0pt; text-align:left; display:block; position:absolute; z-index:-1;"><img src="https://1.bp.blogspot.com/-_oY-kH9IgcM/V_pMR6bJVlI/AAAAAAAAD0Q/cHXlZFKl8XgeahdE6ijGD5IlX0nFinzdwCLcB/s1600/Kota%2BSemarang.png" width="60" height="60" alt="" class="fr-fir fr-dib fr-draggable"></span><strong><span style="font-family:'Times New Roman';">PEMERINTAH PROVINSI SUMATERA SELATAN</span></strong></p>
-	<p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">DEWAN PERWAKILAN RAKYAT DAERAH</span></strong></p>
+	<p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="height:0pt; text-align:left; display:block; position:absolute; z-index:-1;"><img src="https://1.bp.blogspot.com/-_oY-kH9IgcM/V_pMR6bJVlI/AAAAAAAAD0Q/cHXlZFKl8XgeahdE6ijGD5IlX0nFinzdwCLcB/s1600/Kota%2BSemarang.png" width="60" height="60" alt="" class="fr-fir fr-dib fr-draggable"></span><strong><span style="font-family:'Times New Roman';">DEWAN PERWAKILAN RAKYAT DAERAH</span></strong></p>
+	<p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">KOTA SEMARANG</span></strong></p>
 	<p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%;"><span style="font-family:Arial;"> Jl. Pemuda No.146, Sekayu, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50132</span></p>
 	<hr>
 
