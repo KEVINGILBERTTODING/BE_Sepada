@@ -64,6 +64,7 @@ class User_model extends CI_Model
 		}
 	}
 
+
 	function updateUser($id, $dataUser, $dataDetailUser)
 	{
 		$this->db->trans_start();
@@ -88,6 +89,29 @@ class User_model extends CI_Model
 		$this->db->delete('user_detail');
 		$this->db->trans_complete();
 		if ($this->db->trans_status() == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function insertAdmin($data)
+	{
+		$insert = $this->db->insert('user', $data);
+		if ($insert) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function delete($id)
+	{
+
+		$this->db->where('id_user', $id);
+		$delete = $this->db->delete('user');
+
+		if ($delete) {
 			return true;
 		} else {
 			return false;
