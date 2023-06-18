@@ -80,4 +80,97 @@ class Admin extends CI_Controller
 	{
 		$this->ExcelModel->createExcel($status, $dateStart, $dateEnd);
 	}
+
+	function getAllUsersByRole()
+	{
+		$role = $this->input->get('role');
+		echo json_encode($this->user_model->getAllUserByRole($role));
+	}
+
+	function addUser()
+	{
+
+		$date = date('Y-m-d H:i:s');
+		$idUser = md5($date);
+		$dataUser = [
+
+			'id_user' => $idUser,
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password'),
+			'email' => $this->input->post('email'),
+			'id_user_level' => 1,
+			'id_user_detail' => $idUser
+
+		];
+		$dataUserDetail = [
+			'id_user_detail' => $idUser,
+			'id_jenis_kelamin' => $this->input->post('id_jenis_kelamin'),
+			'nama_lengkap' => $this->input->post('nama_lengkap'),
+			'no_telp' => $this->input->post('no_telp'),
+			'alamat' => $this->input->post('alamat')
+		];
+
+		$insert = $this->user_model->insertUser($dataUser, $dataUserDetail);
+		if ($insert == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
+
+	function updateUser()
+	{
+
+
+		$idUser = $this->input->post('id');
+		$dataUser = [
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password'),
+			'email' => $this->input->post('email')
+
+		];
+		$dataUserDetail = [
+
+			'id_jenis_kelamin' => $this->input->post('id_jenis_kelamin'),
+			'nama_lengkap' => $this->input->post('nama_lengkap'),
+			'no_telp' => $this->input->post('no_telp'),
+			'alamat' => $this->input->post('alamat')
+		];
+
+		$insert = $this->user_model->updateUser($idUser, $dataUser, $dataUserDetail);
+		if ($insert == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
+
+	function deleteUser()
+	{
+		$id  = $this->input->post('id');
+		$delete = $this->user_model->deleteUser($id);
+		if ($delete == true) {
+			$response  = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response  = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
 }
