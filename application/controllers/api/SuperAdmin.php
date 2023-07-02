@@ -16,6 +16,7 @@ class SuperAdmin extends CI_Controller
 		$this->load->model('api/user_detail_model');
 		$this->load->model('ExcelModel');
 		$this->load->model('api/divisi_model');
+		$this->load->model('api/anggota_model');
 	}
 	function keputusan()
 	{
@@ -224,6 +225,74 @@ class SuperAdmin extends CI_Controller
 			'updated_at' => date('Y-m-d H:i:s'),
 		];
 		$update = $this->divisi_model->update($id, $data);
+		if ($update == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
+
+	function getAllAnggota()
+	{
+		echo json_encode($this->anggota_model->getAllAnggota());
+	}
+
+	function insertAnggota()
+	{
+		$data = [
+			'nama_lengkap' => $this->input->post('nama_lengkap'),
+			'divisi_id' => $this->input->post('divisi_id'),
+			'no_telp' => $this->input->post('no_telp'),
+			'created_at' => date('Y-m-d H:i:s'),
+			'updated_at' => date('Y-m-d H:i:s'),
+		];
+		$insert = $this->anggota_model->insert($data);
+		if ($insert == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
+
+	function deleteAnggota()
+	{
+		$id = $this->input->post('id');
+		$delete = $this->anggota_model->delete($id);
+		if ($delete == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
+
+	function updateAnggota()
+	{
+		$id = $this->input->post('id');
+		$data = [
+			'nama_lengkap' => $this->input->post('nama_lengkap'),
+			'divisi_id' => $this->input->post('divisi_id'),
+			'no_telp' => $this->input->post('no_telp'),
+			'updated_at' => date('Y-m-d H:i:s'),
+		];
+		$update = $this->anggota_model->update($id, $data);
 		if ($update == true) {
 			$response = [
 				'code' => 200
