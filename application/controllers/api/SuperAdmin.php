@@ -18,6 +18,30 @@ class SuperAdmin extends CI_Controller
 		$this->load->model('api/divisi_model');
 		$this->load->model('api/anggota_model');
 	}
+	function keputusanAcc()
+	{
+		$idStatus = $this->input->post('id_status');
+		$idTamu = $this->input->post('id_tamu');
+
+		$data = [
+			'id_status' => $idStatus,
+			'anggota_id' => $this->input->post('anggota_id')
+		];
+
+		$update = $this->cuti_model->update($idTamu, $data);
+
+		if ($update == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
 	function keputusan()
 	{
 		$idStatus = $this->input->post('id_status');
@@ -305,5 +329,31 @@ class SuperAdmin extends CI_Controller
 			];
 			echo json_encode($response);
 		}
+	}
+
+	function getDay()
+	{
+		$date = $this->cuti_model->getCutiById($this->input->post('id'))['tanggal'];
+		// cari hari bahasa indonesia
+		$day = date('l', strtotime($date));
+		$dayList = [
+			'Sunday' => 'Minggu',
+			'Monday' => 'Senin',
+			'Tuesday' => 'Selasa',
+			'Wednesday' => 'Rabu',
+			'Thursday' => 'Kamis',
+			'Friday' => 'Jumat',
+			'Saturday' => 'Sabtu'
+		];
+		$response = [
+			'day' => $dayList[$day]
+		];
+		echo json_encode($response);
+	}
+
+	function getCutiById()
+	{
+		$id = $this->input->get('id');
+		echo json_encode($this->cuti_model->getCutiById($id));
 	}
 }
