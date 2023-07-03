@@ -15,6 +15,7 @@ class Admin extends CI_Controller
 		$this->load->model('api/user_model');
 		$this->load->model('api/user_detail_model');
 		$this->load->model('ExcelModel');
+		$this->load->model('api/anggota_model');
 	}
 
 	function getAllPengajuan()
@@ -168,6 +169,34 @@ class Admin extends CI_Controller
 			echo json_encode($response);
 		} else {
 			$response  = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
+
+	function getAnggotaJadwal()
+	{
+		$divisiId = $this->input->get('divisi_id');
+		$day =  $this->input->get('day');
+		echo json_encode($this->anggota_model->getAnggotaJadwal($divisiId, $day));
+	}
+
+	function updateAnggota()
+	{
+		$id = $this->input->post('id');
+		$data = [
+			'day' => $this->input->post('day'),
+			'updated_at' => date('Y-m-d H:i:s')
+		];
+		$update = $this->anggota_model->update($id, $data);
+		if ($update == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
 				'code' => 404
 			];
 			echo json_encode($response);

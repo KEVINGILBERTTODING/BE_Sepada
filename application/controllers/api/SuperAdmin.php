@@ -250,6 +250,7 @@ class SuperAdmin extends CI_Controller
 			'divisi_id' => $this->input->post('divisi_id'),
 			'no_telp' => $this->input->post('no_telp'),
 			'created_at' => date('Y-m-d H:i:s'),
+			'day' => 'Senin',
 			'updated_at' => date('Y-m-d H:i:s'),
 		];
 		$insert = $this->anggota_model->insert($data);

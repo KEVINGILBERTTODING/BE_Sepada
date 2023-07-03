@@ -20,6 +20,17 @@ class Anggota_model extends CI_Model
 		return $this->db->get()->result();
 	}
 
+	function getAnggotaJadwal($divisiId, $day)
+	{
+
+		$this->db->select('anggota.*, divisi.nama_divisi');
+		$this->db->from('anggota');
+		$this->db->where('anggota.divisi_id', $divisiId);
+		$this->db->join('divisi', 'divisi.divisi_id = anggota.divisi_id', 'left');
+		$this->db->where('anggota.day', $day);
+		return $this->db->get()->result();
+	}
+
 	function delete($id)
 	{
 		$this->db->where('anggota_id', $id);
